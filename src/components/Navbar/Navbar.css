@@ -1,0 +1,40 @@
+.Topbar{
+    top: 0;
+    display: flex;
+    height: 90px;
+    justify-content: space-around;
+    align-items: center;
+    
+   
+    
+  
+    background-color: #E87676;
+    
+    
+
+}
+.sidebarListItemText{
+    text-decoration: none;
+    color:white;
+    padding: 0.5rem 1rem;
+    
+}
+.TopbarList{
+    display: grid;
+    grid-template-columns: repeat(6,auto);
+    width:40vw;
+    grid-gap:10px;
+    text-align: center;
+    justify-content: end;
+
+    list-style: none;
+    margin-right: 2rem;
+}
+
+.TopbarLeft{
+    margin-top: 38px;
+    margin-left: 5;
+   
+   
+    
+}
