@@ -5,7 +5,7 @@ function Navbar(){
     return(
         <div className="Topbar">
             <div className="TopbarLeft">
-                <img  src="assets/images/RentSahayak.png"></img>
+                <img  src="assets/images/Rentsahayak.png"></img>
             </div>
             <ul className="TopbarList">
                 {NavbarItems.map((items,index)=>{
