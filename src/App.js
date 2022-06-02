@@ -1,24 +1,18 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LandingPage from "./components/Pages/LandingPage";
+import Login from "./components/Auth/Login";
+import Register from "./components/Auth/Register";
 import './App.css';
-import Navbar from './components/Navbar/Navbar';
-import Body from './components/Body/Body';
-import RenterBody from './components/Body/RenterBody';
-import RenteeBody from './components/Body/RenteeBody';
-import Category from './components/Category/Category';
-import Team from './components/Team/Team';
+
 function App() {
   return (
-    <div>
-
-      <Navbar/>
-      <Body/>
-      <RenterBody/>
-      <RenteeBody/>
-      <Team/>
-      
-      
-    </div>
-    
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<Register/>}/>
+      </Routes>
+    </Router>
   );
 }
 

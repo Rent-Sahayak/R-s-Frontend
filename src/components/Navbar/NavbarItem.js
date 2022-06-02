@@ -27,13 +27,13 @@ export const NavbarItems=[
     {
         title:"Login",
        
-        url:'#',
+        url:'/login',
         cName:'sidebarListItemText'
     },
     {
         title:"Register",
        
-        url:'#',
+        url:'/register',
         cName:'sidebarListItemText'
     }
 ]

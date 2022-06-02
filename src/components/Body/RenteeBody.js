@@ -31,6 +31,7 @@ function RenteeBody(){
                     <input className="inputdesign" type="text" name="name" value={name} onChange={handleChange} placeholder="searching for?"></input>
 
                 </div>
+                
 
             </div>
 
