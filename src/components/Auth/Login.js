@@ -17,14 +17,14 @@ function Login() {
   return (
     <div>
       <Navbar />
-      <div className="container">
+      <div className="containers">
         <div className="login-form">
           <div className="main-div">
             <div className="signup">
               <h2 className="text-design-h2">Login to your account</h2>
               <p>
                 Need an account?{" "}
-                <span className="glyphicon glyphicon-log-in " /> Signup
+                <span className="glyphicon glyphicon-log-in " /> <a href="/register">Signup</a>
               </p>
             </div>
             <div>
@@ -52,10 +52,10 @@ function Login() {
                 placeholder="Password"
               />
             </div>
-            <button className="btn button-design text-white">Login</button>
+            <button className=" button-design ">Login</button>
             <p className="forget-password">
-               Forgot Password{" "}
-                <span className="glyphicon glyphicon-log-in " /> Signup
+               <a className="link-danger" href="/forget">Forgot Password?{" "}</a>
+               
               </p>
           </div>
         </div>

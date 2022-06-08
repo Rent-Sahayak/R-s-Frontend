@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import './Register.css'
+import './Register.css';
+import axios from 'axios';
+
 
 function Register(){
     const [name, setName] = useState("");
@@ -15,14 +17,14 @@ function Register(){
     return(
         <div>
             <Navbar/>
-            <div className="container">
+            <div className="containers">
         <div className="login-form">
           <div className="main-div">
             <div className="signup">
               <h2 className="text-design-h2">Register to your account</h2>
               <p>
                 Already have an account?{" "}
-                <span className="glyphicon glyphicon-log-in " /> Login
+                <span className="glyphicon glyphicon-log-in " /><a href="/login">Login</a> 
               </p>
             </div>
             <div>

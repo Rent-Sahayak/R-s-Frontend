@@ -4,6 +4,7 @@ import RenterBody from '../../Body/RenterBody';
 import Footer from '../../Footer/Footer';
 import Navbar from '../../Navbar/Navbar';
 import Team from '../../Team/Team';
+import Category from '../../Category/Category';
 
 function LandingPage() {
   return (
@@ -12,6 +13,7 @@ function LandingPage() {
       <Body/>
       <RenterBody/>
       <RenteeBody/>
+      <Category/>
       <Team/>
       <Footer/>
     </div>
