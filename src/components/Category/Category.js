@@ -1,34 +1,37 @@
 import React from "react";
-import OwlCarousel from 'react-owl-carousel'
+import OwlCarousel from 'react-owl-carousel';
+import { Link } from "react-router-dom";
 import './Category.css'
 function Category(){
     return(
-        <div>
-            <h1>Explore Categories</h1>
-            <OwlCarousel
-            items="4"
-            autoplay
-            nav
-            dots
-            loop
+        <div className="container ">
+            <h1 className="Header ">Explore Categories</h1>
+            <div className="flex flex-row justify-evenly mt-5 categoryclass">
 
-            >
                 <div>
-                    <img src='/assets/images/image5.png'></img>
+                    <Link to='/house'>
+                    
+                    <img  src='/assets/images/image5.png'></img>
+                    </Link>
+
                 </div>
                 <div>
-                    <img src='/assets/images/image6.png'></img>
+                    <Link to ='/car'>
+                        <img src='/assets/images/image6.png'></img>
+                    </Link>
+                    
                 </div>
                 <div>
+                    <Link to='/appartments'>
+                    
                     <img src='/assets/images/image7.png'></img>
+                    </Link>
                 </div>
-                <div>
-                    <img src='/assets/images/image8.png'></img>
-                </div>
-                <div>
-                    <img src='/assets/images/image9.png'></img>
-                </div>
-            </OwlCarousel>
+                
+                
+            </div>
+            
+            
         </div>
     )
 

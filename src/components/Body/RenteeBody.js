@@ -13,7 +13,7 @@ function RenteeBody(){
 
     return(
     
-            <div className="container">
+            <div className="containers">
                 
                 <div className="submain-container">
                     <img className="Image"src='assets/images/Rentee.png'></img>

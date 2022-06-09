@@ -2,20 +2,29 @@ import React, {useState} from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import './Register.css'
-
+import { apiAuthRegister } from "../../ApiService/AuthApi";
+import { userCategory } from "../../Utils/enumconstant";
+const initialRegisterData={fullName:"",email:"",password:"",category:userCategory.TENANT}
 function Register(){
-    const [name, setName] = useState("");
-    const [password, setPassword] = useState("");
+    const [registerData, setRegisterData] = useState(initialRegisterData);
+    const [isSubmitting, setIsSubmitting] = useState(false)
     function handleChange(e) {
-        setName(e.target.value);
+      const {name,value}=e.target
+        setRegisterData(prevState=>({...prevState,[name]:value}))
+
     }
-    function handlePasswordChange(e) {
-        setName(e.target.value);
+    async function handleSubmit(e) {
+        e.preventDefault();
+        const {fullName,...remainingData}=registerData
+        
+        const res=await apiAuthRegister({...remainingData,profile:{fullName}});
+        console.log(res)
+
     }
     return(
         <div>
             <Navbar/>
-            <div className="container">
+            <div className="containers">
         <div className="login-form">
           <div className="main-div">
             <div className="signup">
@@ -36,7 +45,7 @@ function Register(){
                 onChange={handleChange}
                 type="text"
                 className="form-control mb-3 "
-                name="fullname"
+                name="fullName"
                 placeholder="enter your fullname"
               />
             </div>
@@ -52,32 +61,32 @@ function Register(){
             </div>
             <div className="form-group">
               <input
-                onChange={handlePasswordChange}
+                onChange={handleChange}
                 type="password"
                 className="form-control mb-3 "
                 name="password"
                 placeholder="Password"
               />
             </div>
-            <div className="form-group">
+            {/* <div className="form-group">
               <input
-                onChange={handlePasswordChange}
+                onChange={handleChange}
                 type="password"
                 className="form-control mb-3"
                 name="confirmpassword"
                 placeholder="confirm your Password"
               />
-            </div>
-            <div className="form-group">
+            </div> */}
+            {/* <div className="form-group">
               <input
                 onChange={handleChange}
                 type="text"
                 className="form-control "
-                name="address"
+                name="category"
                 placeholder="Address"
               />
-            </div>
-            <button className="btn register-button text-white">Regitser</button>
+            </div> */}
+            <button className="btn register-button text-white" onClick={handleSubmit}>Regitser</button>
             
           </div>
         </div>
