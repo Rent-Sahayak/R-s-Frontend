@@ -68,7 +68,7 @@ function Register(){
                 placeholder="Password"
               />
             </div>
-            {/* <div className="form-group">
+            <div className="form-group">
               <input
                 onChange={handleChange}
                 type="password"
@@ -76,16 +76,24 @@ function Register(){
                 name="confirmpassword"
                 placeholder="confirm your Password"
               />
-            </div> */}
-            {/* <div className="form-group">
-              <input
-                onChange={handleChange}
-                type="text"
-                className="form-control "
-                name="category"
-                placeholder="Address"
-              />
-            </div> */}
+            </div>
+            <div className="form-group d-flex ">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                <label class="form-check-label" for="flexCheckDefault">
+                  Tenant
+                </label>
+                
+            
+              </div>
+              <div class="form-check ml-3" >
+                <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault"/>
+                <label class="form-check-label" for="flexCheckDefault">
+                  Renter
+                </label>
+            
+              </div>
+            </div>
             <button className="btn register-button text-white" onClick={handleSubmit}>Regitser</button>
             
           </div>

@@ -2,8 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./components/Pages/LandingPage";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
-import Property from "./components/Property/Property";
 import './App.css';
+import IndexPage from "./components/Property/IndexPage";
+import ViewProperty from "./components/Property/PropertyList/ViewProperty";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
-        <Route path="/house" element={<Property/>}/>
+        <Route path="/house" element={<IndexPage/>}/>
+        <Route path="/propertylist" element={<ViewProperty/>}/>
       </Routes>
     </Router>
   );
