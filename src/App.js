@@ -5,6 +5,7 @@ import Register from "./components/Auth/Register";
 import './App.css';
 import IndexPage from "./components/Property/IndexPage";
 import ViewProperty from "./components/Property/PropertyList/ViewProperty";
+import ForgetPassword from "./components/Auth/ForgetPassword";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login/>}/>
+        <Route path="/forgetpassword" element={<ForgetPassword/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/house" element={<IndexPage/>}/>
         <Route path="/propertylist" element={<ViewProperty/>}/>

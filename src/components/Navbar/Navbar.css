@@ -1,7 +1,7 @@
 .Topbar{
     top: 0;
     display: flex;
-    height: 90px;
+    height: 70px;
     justify-content: space-around;
     align-items: center;
     position:sticky;
@@ -26,7 +26,7 @@
 .TopbarList{
     display: grid;
     grid-template-columns: repeat(6,auto);
-    width:40vw;
+    width:50vw;
     grid-gap:10px;
     text-align: center;
     justify-content: end;
@@ -38,8 +38,51 @@
 .TopbarLeft{
     margin-top: 38px;
     margin-left: 5;
-   
-   
+
+}
+.hamburger-menu{
+    display: none;
+}
+@media(max-width:1245px){
+    .Topbar{
+        height: 60px;
+        
+    }
+    .TopbarLeft{
+        margin-left: 3;
+    }
+    .TopbarList{
+        width: 70vw;
+    }
+}
+@media(max-width:950px){
+    .Topbar{
+        height: 60px;
+        
+    }.TopbarLeft{
+        margin-right:70%;
+    }
+    .TopbarList{
+        display: none;
+    }
+    .hamburger-menu{
+        display: block;
+        font-size: 1.8rem;
+    }
+    .mobile-menu-link{
+        grid-column: 2/4;
+        position: relative;
+        z-index: 99;
+        height: 20rem;
+        display: grid;
+        grid-column: 2/5;
+        align-items: center;
+        padding-left: 3rem;
+        transition: all 2s linear;
+        
     
+    }
+
+
 }
 

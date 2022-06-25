@@ -4,3 +4,20 @@
     justify-content: center;
     justify-items: center;
 }
+.main-contain{
+    overflow-x: hidden;
+    padding: 2px;
+    
+}
+.card-container{
+    margin-left: 15%;
+    margin-top: 8px;;
+    
+
+}
+
+.card-design{
+    margin-left: 12px;
+    margin-top: 20px;
+    width: 67%;
+}

@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import './Body.css'
-
+import { Link } from "react-router-dom";
 
 function RenterBody(){
     const [name,setName]=useState('')
@@ -21,7 +21,11 @@ function RenterBody(){
                     <p className="paragraph">
                     Start renting your places and Start earning passive income
                     </p>
+                    <Link to='/register'>
+
                     <button className="Button-style">List an Spaces</button><br></br>
+                    </Link>
+                    
                     <input className="inputdesign" type="text" name="name" value={name} onChange={handleChange} placeholder="searching for?"></input>
 
                 </div>
