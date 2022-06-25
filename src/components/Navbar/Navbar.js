@@ -7,10 +7,14 @@ function Navbar(){
     return(
         <div className="Topbar">
             <div className="TopbarLeft">
+<<<<<<< HEAD
             <a href="/"> <img  src="assets/images/Rentsahayak.png"></img></a>
 
                 
 
+=======
+                <a href="/"> <img  src="assets/images/Rentsahayak.png"></img></a>
+>>>>>>> abc73b95bd770642a1c652fe8c94db1832838588
             </div>
             <div className="mobile-menu-link">
             <ul className="TopbarList">

@@ -95,7 +95,7 @@ function Login() {
               <h2 className="text-design-h2">Login to your account</h2>
               <p>
                 Need an account?{" "}
-                <span className="glyphicon glyphicon-log-in " /> Signup
+                <span className="glyphicon glyphicon-log-in " /> <a href="/register">Signup</a>
               </p>
             </div>
             <div>
@@ -115,10 +115,36 @@ function Login() {
             </form>
 
 
+<<<<<<< HEAD
             <p className="forget-password">
               <a href="/forgetpassword">Forgot Password{" "}</a>
               <span className="glyphicon glyphicon-log-in " /> Signup
             </p>
+=======
+            <div className="form-group">
+              <input
+                onChange={handleUsernameChange}
+                type="text"
+                className="form-control mb-3"
+                name="username"
+                placeholder="Username"
+              />
+            </div>
+            <div className="form-group">
+              <input
+                onChange={handlePasswordChange}
+                type="password"
+                className="form-control "
+                name="password"
+                placeholder="Password"
+              />
+            </div>
+            <button className=" button-design ">Login</button>
+            <p className="forget-password">
+               <a className="link-danger" href="/forget">Forgot Password?{" "}</a>
+               
+              </p>
+>>>>>>> abc73b95bd770642a1c652fe8c94db1832838588
           </div>
         </div>
       </div>
