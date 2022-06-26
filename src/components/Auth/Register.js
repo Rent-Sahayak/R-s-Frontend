@@ -3,8 +3,8 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import './Register.css'
 import { apiAuthRegister } from "../../ApiService/AuthApi";
-import { userCategory } from "../../Utils/enumconstant";
-
+import { localStorageKey, userCategory, userOperations } from "../../Utils/enumconstant";
+import { useNavigate } from 'react-router-dom'
 import './Register.css';
 import axios from 'axios';
 
@@ -14,6 +14,7 @@ const initialRegisterData={fullName:"",email:"",password:"",category:userCategor
 function Register(){
     const [registerData, setRegisterData] = useState(initialRegisterData);
     const [isSubmitting, setIsSubmitting] = useState(false)
+    const navigate=useNavigate()
     function handleChange(e) {
       const {name,value}=e.target
         setRegisterData(prevState=>({...prevState,[name]:value}))
@@ -24,7 +25,11 @@ function Register(){
         const {fullName,...remainingData}=registerData
         
         const res=await apiAuthRegister({...remainingData,profile:{fullName}});
-        console.log(res)
+
+        localStorage.setItem(localStorageKey.REGISTER, JSON.stringify({email:registerData.email,operation:userOperations.REGISTER}))
+        navigate('/otpcode')
+
+      
 
     }
     return(
