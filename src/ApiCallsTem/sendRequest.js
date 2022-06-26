@@ -9,7 +9,7 @@ export const tokenAssembler = () => {
 const getRootUrl = ()=> {
   const port = 8000
   const dev = true
-  return dev ? `http://localhost:${port}/api` : 'https://stark-fjord-70567.herokuapp.com/api'
+  return 'https://rentsahayak-backend.herokuapp.com/'
 }
 
 const sendRequest = async (

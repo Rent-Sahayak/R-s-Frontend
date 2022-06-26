@@ -5,11 +5,13 @@ import Footer from '../../Footer/Footer';
 import Navbar from '../../Navbar/Navbar';
 import Team from '../../Team/Team';
 import Category from '../../Category/Category';
+import { useState } from 'react';
 
 function LandingPage() {
+  const [name, setName] = useState('prazwal')
   return (
     <div>
-      <Navbar/>
+      <Navbar name={name} onClick={() => {console.log('onclick')}}/>
       <Body/>
       <RenterBody/>
       <RenteeBody/>

@@ -1,38 +1,75 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './Navbar.css'
-import { NavbarItems } from "./NavbarItem";
+import { commonNavItems, notLoggedInNavItems } from "./NavbarItem";
 import {FaHamburger} from "react-icons/fa"
+import { useUserContext } from "../../context/userContext";
+import { useNavigate } from 'react-router-dom';
+
+
+
 function Navbar(){
     const [showMediaIcons,setShowMediaIcons]=useState(false)
+    const [activeNavItems, setActiveNavItems] = useState([]);
+    const navigate=useNavigate()
+
+    const { isLoggedIn} = useUserContext()
+
+    useEffect(() => {
+        if(isLoggedIn){
+            setActiveNavItems(commonNavItems)
+        }else{  
+            setActiveNavItems([...commonNavItems, ...notLoggedInNavItems])
+        }
+    }, [isLoggedIn])
+    async function Logout(){
+        localStorage.clear();
+        
+      
+
+    }
+
     return(
         <div className="Topbar">
             <div className="TopbarLeft">
-<<<<<<< HEAD
             <a href="/"> <img  src="assets/images/Rentsahayak.png"></img></a>
-
-                
-
-=======
-                <a href="/"> <img  src="assets/images/Rentsahayak.png"></img></a>
->>>>>>> abc73b95bd770642a1c652fe8c94db1832838588
             </div>
             <div className="mobile-menu-link">
             <ul className="TopbarList">
-                {NavbarItems.map((items,index)=>{
+                {activeNavItems.length > 0 && activeNavItems.map((items,index)=>{
                     return(
-
-                    <li  className  key={index}>
-                        <a className={items.cName} href={items.url}>{items.title}</a>
+                    <li  key={index}>
+                        <a className={'sidebarListItemText'} href={items.url}>{items.title}</a>
                     </li>
                     )
 
                 })}
+                {isLoggedIn && (
+               
+                    <ul className="addedMenuItem">
+                        <li><a href="/login" className={'sidebarListItemText'} onClickCapture={Logout}>Logout</a></li>
+                        <li><a href="/dashboard" className={'sidebarListItemText'}>Dashboard</a></li>
+                    </ul>
+               
+                
+                )}
             </ul>
             </div>
             <div className="hamburger-menu">
-                <a href="#" onClick={()=>setShowMediaIcons(!showMediaIcons)}>
+                <span onClick={()=>setShowMediaIcons(!showMediaIcons)}>
                     <FaHamburger/>
-                </a>
+                </span>
+                {showMediaIcons && (
+                   <ul className="TopbarList">
+                   {activeNavItems.length > 0 && activeNavItems.map((items,index)=>{
+                       return(
+                       <li  key={index}>
+                           <a className={'sidebarListItemText'} href={items.url}>{items.title}</a>
+                       </li>
+                       )
+   
+                   })}
+               </ul>
+                )}
             </div>
             
             

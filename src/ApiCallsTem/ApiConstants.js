@@ -2,7 +2,7 @@
 
 
 const auth = {
-  getUser: '/user',
+  getUser: '/user/me',
   register: '/user/register',
   login: '/user/login',
   forgotPassword: '/user/forgot-password',

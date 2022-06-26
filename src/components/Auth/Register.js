@@ -1,17 +1,16 @@
 import React, {useState} from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-<<<<<<< HEAD
 import './Register.css'
 import { apiAuthRegister } from "../../ApiService/AuthApi";
 import { userCategory } from "../../Utils/enumconstant";
-const initialRegisterData={fullName:"",email:"",password:"",category:userCategory.TENANT}
-=======
+
 import './Register.css';
 import axios from 'axios';
 
+const initialRegisterData={fullName:"",email:"",password:"",category:userCategory.TENANT}
 
->>>>>>> abc73b95bd770642a1c652fe8c94db1832838588
+
 function Register(){
     const [registerData, setRegisterData] = useState(initialRegisterData);
     const [isSubmitting, setIsSubmitting] = useState(false)

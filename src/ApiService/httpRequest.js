@@ -1,7 +1,7 @@
 import axios from "axios";
 const getRootUrl=()=>{
     const port=8000
-    return `http://localhost:${port}/api`
+    return `https://rentsahayak-backend.herokuapp.com/api/`
 }
 const sendRequest=async(
     method="GET",
@@ -15,7 +15,7 @@ const sendRequest=async(
         headers:secured?
         {
             post:{ 'Content-Type': 'application/json' },
-            'Authorization': '',
+            'Authorization': localStorage.getItem("userInfo"),
         }:{
             post:{'Content-Type':'application/json'},
         }

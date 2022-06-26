@@ -10,5 +10,8 @@ const apiAuthRegister=(data)=>{
 const apiForgetPassword=(data)=>{
     return sendRequest("POST",apiEndPoints.auth.forgotPassword,false,data)
 }
-
-export {apiAuthLogin,apiAuthRegister,apiForgetPassword}
+const apiAuthGetUser = () => {
+    return sendRequest('GET', apiEndPoints.auth.getUser, true )
+  }
+  
+export {apiAuthLogin,apiAuthRegister,apiForgetPassword, apiAuthGetUser}

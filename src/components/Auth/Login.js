@@ -11,6 +11,8 @@ import { apiAuthLogin } from "../../ApiService/AuthApi";
 import { validateEmail } from "../../Utils/validations";
 import { toast } from 'react-toastify'
 import Loading from "./Loading";
+import { useUserContext } from "../../context/userContext";
+import { Input } from "../coreUI/Input/Input";
 
 
 const initialLoginData = { email: "", password: "" }
@@ -24,7 +26,14 @@ function Login() {
   const emailIdRef = useRef(null)
   const passwordRef = useRef(null)
   const navigate = useNavigate()
- 
+
+  const {isLoggedIn, fetchUser} = useUserContext()
+
+  useEffect(() => {
+    if(isLoggedIn){
+      navigate('/')
+    }
+  }, [isLoggedIn])
  
   function handleChange(e) {
     const { name, value } = e.target
@@ -38,15 +47,13 @@ function Login() {
     if (validFormState()) {
       setIsSubmitting(true)
       try {
-        const config={
-          headers:{
-            "Content-type":"application/json"
-          }
-        }
-        const { res } = await apiAuthLogin(loginData,config)
         
-        localStorage.setItem('userInfo',JSON.stringify(res))
+        const res = await apiAuthLogin(loginData)
+        
+        localStorage.setItem('userInfo',res.data.data.token)
+
         toast('you have been logged in')
+        await fetchUser()
         navigate('/')
       }
       catch (err) {
@@ -80,11 +87,8 @@ function Login() {
     }
     setErrorState(_error)
     return Object.keys(_error).length === 0
-
-
   }
 
-  console.log("state", loginData)
   return (
     <div>
       <Navbar />
@@ -108,43 +112,14 @@ function Login() {
             
             
             <form onSubmit={handleSubmit} className="form-group">
-              <input className="form-control mb-3" ref={emailIdRef} autoFocus={true} error={errorState?.email || null} type='text' name='email' placeholder='Email Address' value={loginData.email} category='small' onChange={handleChange} />
-              <input className="form-control" ref={passwordRef} error={errorState?.password || null} type='password' name='password' placeholder='Password' value={loginData.password} category='small' onChange={handleChange} />
+              <Input className="form-control mb-3" ref={emailIdRef} autoFocus={true} error={errorState?.email || null} type='text' name='email' placeholder='Email Address' value={loginData.email} category='small' onChange={handleChange} />
+              <Input className="form-control" ref={passwordRef} error={errorState?.password || null} type='password' name='password' placeholder='Password' value={loginData.password} category='small' onChange={handleChange} />
               <button className=" button-design" loading={isSubmitting} type='submit' >Submit</button>
 
             </form>
 
 
-<<<<<<< HEAD
-            <p className="forget-password">
-              <a href="/forgetpassword">Forgot Password{" "}</a>
-              <span className="glyphicon glyphicon-log-in " /> Signup
-            </p>
-=======
-            <div className="form-group">
-              <input
-                onChange={handleUsernameChange}
-                type="text"
-                className="form-control mb-3"
-                name="username"
-                placeholder="Username"
-              />
-            </div>
-            <div className="form-group">
-              <input
-                onChange={handlePasswordChange}
-                type="password"
-                className="form-control "
-                name="password"
-                placeholder="Password"
-              />
-            </div>
-            <button className=" button-design ">Login</button>
-            <p className="forget-password">
-               <a className="link-danger" href="/forget">Forgot Password?{" "}</a>
-               
-              </p>
->>>>>>> abc73b95bd770642a1c652fe8c94db1832838588
+           
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 const auth = {
-    getUser: '/user',
+    getUser: '/user/profile',
     register: '/user/register',
     login: '/user/login',
     forgotPassword: '/user/forgot-password',
