@@ -8,10 +8,10 @@ function Category(){
             <h1 className="Header ">Explore Categories</h1>
             <div className="flex flex-row justify-evenly mt-5 categoryclass">
 
-                <div>
+                <div className="image-contain">
                     <Link to='/house'>
                     
-                    <img  src='/assets/images/image5.png'></img>
+                    <img  src='/assets/images/image11.png'></img>
                     </Link>
 
                 </div>

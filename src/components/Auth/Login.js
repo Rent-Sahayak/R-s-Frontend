@@ -49,11 +49,14 @@ function Login() {
       try {
         
         const res = await apiAuthLogin(loginData)
+
         
         localStorage.setItem('userInfo',res.data.data.token)
+        console.log(res.data)
 
         toast('you have been logged in')
-        await fetchUser()
+        const user=await fetchUser()
+        console.log(user.data.category)
         navigate('/')
       }
       catch (err) {
@@ -114,6 +117,7 @@ function Login() {
             <form onSubmit={handleSubmit} className="form-group">
               <Input className="form-control mb-3" ref={emailIdRef} autoFocus={true} error={errorState?.email || null} type='text' name='email' placeholder='Email Address' value={loginData.email} category='small' onChange={handleChange} />
               <Input className="form-control" ref={passwordRef} error={errorState?.password || null} type='password' name='password' placeholder='Password' value={loginData.password} category='small' onChange={handleChange} />
+              <p>Forgot your password? <a href="/forgetpassword">Reset now?</a></p>
               <button className=" button-design" loading={isSubmitting} type='submit' >Submit</button>
 
             </form>

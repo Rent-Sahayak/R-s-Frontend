@@ -9,6 +9,8 @@ import ViewProperty from "./components/Property/PropertyList/ViewProperty";
 import ForgetPassword from "./components/Auth/ForgetPassword";
 import Index from "./components/Dashboard/Index";
 import { OTP } from "./components/Auth/OTP";
+import ResetPassword from "./components/Auth/ResetPassword";
+import GoogleMap from "./components/Property/PropertyList/GoogleMap";
 
 function App() {
   return (
@@ -18,12 +20,13 @@ function App() {
 
         <Route path="/login" element={<Login/>}/>
         <Route path="/forgetpassword" element={<ForgetPassword/>}/>
+        <Route path='/resetpassword' element={<ResetPassword/>}/>
         <Route path='/otpcode' element={<OTP/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/dashboard" element={<Index/>}/>
         <Route path="/house" element={<IndexPage/>}/>
         <Route path="/propertylist" element={<ViewProperty/>}/>
-        <Route path="/house" element={<Property/>}/>
+        <Route path="/googlemap" element={<GoogleMap/>}/>
       </Routes>
     </Router>
   );

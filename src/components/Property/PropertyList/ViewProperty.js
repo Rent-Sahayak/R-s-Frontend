@@ -55,7 +55,7 @@ function ViewProperty() {
         </div>
       </div>
       <div className="row container card-container">
-        <div className="col-8">
+        <div className="col-8 card1">
           <Card>
             <Card.Body>
               <p>
