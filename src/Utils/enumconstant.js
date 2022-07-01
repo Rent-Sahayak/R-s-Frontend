@@ -10,5 +10,6 @@ export const userOperations= {
     REACTIVATION:'REACTIVATION',
 }
 export const localStorageKey={
-    REGISTER:'RG'
+    REGISTER:'RG',
+    OTP_DATA:"KEY"
 } 

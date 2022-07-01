@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "./Login.css";
 import Navbar from "../Navbar/Navbar";
 
+
 import { useNavigate } from 'react-router-dom'
 import Footer from "../Footer/Footer";
 
@@ -13,6 +14,7 @@ import { toast } from 'react-toastify'
 import Loading from "./Loading";
 import { useUserContext } from "../../context/userContext";
 import { Input } from "../coreUI/Input/Input";
+import { userCategory, userOperations } from "../../Utils/enumconstant";
 
 
 const initialLoginData = { email: "", password: "" }
@@ -57,7 +59,8 @@ function Login() {
         toast('you have been logged in')
         const user=await fetchUser()
         console.log(user.data.category)
-        navigate('/')
+        navigate('/dashboard')
+        
       }
       catch (err) {
         const { response } = err

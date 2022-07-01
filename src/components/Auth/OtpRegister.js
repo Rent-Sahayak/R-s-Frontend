@@ -6,21 +6,22 @@ import Navbar from "../Navbar/Navbar";
 import OtpInput, { OtpInputProps } from 'react-otp-input'
 import { Navigate, useNavigate } from "react-router-dom";
 import './OTP.css'
-export const OTP = () => {
+export const OtpRegister = () => {
     const [otpcode, setOtpcode] = useState('');
     const navigate=useNavigate();
    
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const userdata = JSON.parse(localStorage.getItem(localStorageKey.OTP_DATA))
+            const userdata = JSON.parse(localStorage.getItem(localStorageKey.REGISTER))
             console.log(userdata)
             if (userdata) {
 
                 const res = await apiVerifyOtp({ otpCode: otpcode, operation: userdata.operation, email: userdata.email })
+                console.log("res",res)
                 if (res.data.success) {
-                  
-                    navigate('/resetpassword');
+                    localStorage.removeItem(localStorageKey.REGISTER)
+                    navigate('/login');
 
                 }
             }
@@ -51,3 +52,4 @@ export const OTP = () => {
         </div>
     )
 }
+export default OtpRegister;

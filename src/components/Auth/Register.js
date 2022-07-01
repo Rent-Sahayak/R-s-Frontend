@@ -38,7 +38,7 @@ function Register(){
             console.log(res)
     
             localStorage.setItem(localStorageKey.REGISTER, JSON.stringify({email:registerData.email,operation:userOperations.REGISTER}))
-            navigate('/otpcode')
+            navigate('/otpregister')
           }
           catch (err) {
             const { response } = err

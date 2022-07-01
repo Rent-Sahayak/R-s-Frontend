@@ -2,13 +2,28 @@ import React, { useState } from "react";
 import Navbar from "../../Navbar/Navbar";
 import Footer from "../../Footer/Footer";
 import { Link } from "react-router-dom";
-import { Container, Card, Col, Row } from "react-bootstrap";
-
+import { Container, Card, Col, Row, Button } from "react-bootstrap";
+import { Form,Input,Select,Space } from 'antd';
 
 import "./viewproperty.css";
+import {Modal} from 'antd'
+
 const FORM_ENDPOINT = "";
+
 function ViewProperty() {
   const [submitted, setSubmitted] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
   const handleSubmit = () => {
     setTimeout(() => {
       setSubmitted(true);
@@ -27,8 +42,27 @@ function ViewProperty() {
     <div>
       <Navbar />
       <div className="container mt-2">
-        <h1 className="card-title">House Fore Rent In New Baneshwor</h1>
-        <p className="card-text">New Baneshwor,Kathmandu</p>
+        <div className="d-flex justify-content-between ">
+          <div>
+
+          <h1 className="card-title">House Fore Rent In New Baneshwor</h1>
+          <p className="card-text">New Baneshwor,Kathmandu</p>
+          </div>
+          <div>
+            <Button onClick={showModal} className="mt-2 btn-danger">Book Now</Button>
+          </div>
+          <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+            <form>
+              
+
+            </form>
+          
+          </Modal >
+          
+       
+
+
+        </div>
         <div className="row g-1 ">
           <div className="col-8">
             <img src="assets/images/house1.jpg"></img>

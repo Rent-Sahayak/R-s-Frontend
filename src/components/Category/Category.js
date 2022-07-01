@@ -13,12 +13,14 @@ function Category(){
                     
                     <img  src='/assets/images/image11.png'></img>
                     </Link>
+                    <p className="font-styles">House</p>
 
                 </div>
                 <div>
                     <Link to ='/car'>
                         <img src='/assets/images/image6.png'></img>
                     </Link>
+                    <p className="font-styles">Room</p>
                     
                 </div>
                 <div>
@@ -26,6 +28,7 @@ function Category(){
                     
                     <img src='/assets/images/image7.png'></img>
                     </Link>
+                    <p className="font-styles">Office</p>
                 </div>
                 
                 

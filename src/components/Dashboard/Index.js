@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import './Index.css';
+import {Link} from "react-router-dom";
 import Navbar from '../Navbar/Navbar';
-import { Layout, Avatar, Menu, Icon, Breadcrumb, Button } from 'antd';
+
+
+import { Layout, Avatar, Menu, Breadcrumb, Button } from 'antd';
+
 import Title from 'antd/lib/typography/Title';
 import SubMenu from 'antd/lib/menu/SubMenu';
+
 
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -24,7 +29,7 @@ function Index() {
     <div className="Index">
       <Layout>
         <Navbar/>
-        <Layout>
+        <Layout className='container'>
           <Sider>
             <Menu
               defaultSelectedKeys={['Dashboard']}
@@ -33,9 +38,13 @@ function Index() {
             <Menu.Item key='Dashboard'>
                 Dashboard
             </Menu.Item>
+            
             <Menu.Item key='Profile'>
                 Profile
             </Menu.Item>
+            
+          
+            
               <SubMenu
                 title={
                   <span>
