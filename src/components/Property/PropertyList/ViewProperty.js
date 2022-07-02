@@ -53,6 +53,7 @@ function ViewProperty() {
           </div>
           <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
             <form>
+              hi
               
 
             </form>

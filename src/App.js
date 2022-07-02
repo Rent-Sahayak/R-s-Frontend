@@ -8,12 +8,15 @@ import './App.css';
 import IndexPage from "./components/Property/IndexPage";
 import ViewProperty from "./components/Property/PropertyList/ViewProperty";
 import ForgetPassword from "./components/Auth/ForgetPassword";
-import Index from "./components/Dashboard/Index";
+
 import { OTP } from "./components/Auth/OTP";
+
 import ResetPassword from "./components/Auth/ResetPassword";
 import GoogleMap from "./components/Property/PropertyList/GoogleMap";
-import ProfileScreen from "./components/Dashboard/screens/ProfileScreen/ProfileScreen";
 import OtpRegister from "./components/Auth/OtpRegister";
+import Dashboard from "./components/Dashboard/Dashboard";
+import ProfileScreen from "./components/Dashboard/screens/ProfileScreen/ProfileScreen";
+
 
 function App() {
   return (
@@ -26,12 +29,16 @@ function App() {
         <Route path='/resetpassword' element={<ResetPassword/>}/>
         <Route path='/otpcode' element={<OTP/>}/>
         <Route path="/register" element={<Register/>}/>
-        <Route path="/dashboard" element={<Index/>}/>
         <Route path="/renterdashboard" element={<RenterBoard/>}/>
         <Route path="/house" element={<IndexPage/>}/>
         <Route path="/propertylist" element={<ViewProperty/>}/>
-        <Route path='/userprofile' element={<ProfileScreen/>}/>
+        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/userprofile" element={<ProfileScreen/>}/>
+       
         <Route path='/otpregister' element={<OtpRegister/>}/>
+       
+
+       
       </Routes>
     </Router>
   );

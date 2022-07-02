@@ -19,6 +19,9 @@ const apiVerifyOtp=(data)=>{
 const apiResetPassword=(data)=>{
     return sendRequest('POST',apiEndPoints.auth.resetPassword,true,data)
 }
+const apiUserProfile=(data)=>{
+    return sendRequest('GET',apiEndPoints.auth.profile,true,data)
+}
 
   
-export {apiAuthLogin,apiAuthRegister,apiForgetPassword, apiAuthGetUser,apiVerifyOtp,apiResetPassword}
+export {apiAuthLogin,apiAuthRegister,apiForgetPassword, apiAuthGetUser,apiVerifyOtp,apiResetPassword,apiUserProfile}
