@@ -26,43 +26,27 @@ function HouseRent({slides}){
                 <Link  to="/">
                     <button className="button-class mt-2">
                     View All
-
-
                     </button>
-            </Link>
-                
-                
-                
+            </Link>     
             </div>
             <Slider {...settings}>
                 {
                     Data.cardData.map((item,index)=>{
-                        return(
-                            
-                            
+                        return(                           
                             <React.Fragment>
-                                <Col className="mr-5">
-                                
+                                <Col className="mr-5">                               
                                 <Card>
-                                
-                                    <Card.Img
+                                   <Card.Img
                                     variant="top"
                                     src={item.img}
-                                    
-                                    
                                     />
-                                    
                                     <Card.Body>
                                     <h5 className="card-title">{item.title}</h5>
                                         <p className="card-text">{item.desc}</p>
-
                                     </Card.Body>
-
                                 </Card>
-
                                 </Col>
                             </React.Fragment>
-
                         )
                     })
                 }

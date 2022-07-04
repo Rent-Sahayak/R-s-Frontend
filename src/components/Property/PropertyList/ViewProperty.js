@@ -1,23 +1,51 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Navbar from "../../Navbar/Navbar";
 import Footer from "../../Footer/Footer";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { Container, Card, Col, Row, Button } from "react-bootstrap";
 import { Form, Input, Select, Space } from 'antd';
 
 import "./viewproperty.css";
 import { Modal } from 'antd'
+import { apiFetchHouse } from "../../../ApiService/AuthApi";
 
 const FORM_ENDPOINT = "";
+ //const initialPropertyData={title:"",description:"",price:"",floors:"",bedroom:"",bathroom:"",parkingSpace:"",furnishing:"",roadSize:"",roadType:"",areaSqFeet:""}
+
 
 function ViewProperty() {
   const [submitted, setSubmitted] = useState(false);
+  const [title,setTitle]=useState("")
+  const  params=useParams()
+  console.log(params);
+  // const [propertyData,setpropertyData]=useState(initialPropertyData);
   const [price,setPrice]=useState('');
   const [message,setMessage]=useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
     setIsModalVisible(true);
   };
+  useEffect(() => {
+    const fetchHouse = async () => {
+      console.log("hi")
+      try {
+        const res = await apiFetchHouse(params.propertyId);
+        
+        if(res){
+          setTitle(res.data.data);
+        }
+        
+        console.log('responsess',res.data.data)
+
+       
+      }
+      catch (e) {
+        console.log(e)
+      }
+    };
+    fetchHouse()
+  }, [])
+
 
   const handleOk = () => {
     setIsModalVisible(false);
@@ -40,6 +68,7 @@ function ViewProperty() {
       </>
     );
   }
+
   return (
     <div>
       <Navbar />
@@ -47,7 +76,7 @@ function ViewProperty() {
         <div className="d-flex justify-content-between ">
           <div>
 
-            <h1 className="card-title">House Fore Rent In New Baneshwor</h1>
+            <h1 className="card-title">{title.title}</h1>
             <p className="card-text">New Baneshwor,Kathmandu</p>
           </div>
           <div>
@@ -70,26 +99,26 @@ function ViewProperty() {
         </div>
         <div className="row g-1 ">
           <div className="col-8">
-            <img src="assets/images/house1.jpg"></img>
+            <img src={process.env.PUBLIC_URL+"/assets/images/house1.jpg"}></img>
           </div>
           <div className="col ">
             <div className="row ">
-              <img src="assets/images/house2.jpg"></img>
+              <img src={process.env.PUBLIC_URL+"/assets/images/house2.jpg"}></img>
             </div>
             <div className="row">
-              <img src="assets/images/house3.jpg"></img>
+              <img src={process.env.PUBLIC_URL+"/assets/images/house3.jpg"}></img>
             </div>
           </div>
         </div>
         <div className="row gx-1">
           <div className="col">
-            <img src="assets/images/house4.jpg"></img>
+            <img src={process.env.PUBLIC_URL+"/assets/images/house4.jpg"}></img>
           </div>
           <div className="col">
-            <img src="assets/images/house5.jpg"></img>
+            <img src={process.env.PUBLIC_URL+"/assets/images/house5.jpg"}></img>
           </div>
           <div className="col">
-            <img src="assets/images/house6.jpg"></img>
+            <img src={process.env.PUBLIC_URL+"/assets/images/house6.jpg"}></img>
           </div>
         </div>
       </div>
@@ -104,26 +133,23 @@ function ViewProperty() {
               <hr></hr>
               <h1> Description </h1>
               <p>
-                A huge spacious flat is for RENT in Pokhara, near Davis Fall.
-                It’s a very good opportunity and should not miss if you are
-                looking for a nice flat in Pokhara for rent. The flat is on
-                GROUND FLOOR of 3 story bungalow. The house owner occupies the
-                1st and 2nd floors.
+               {title.description}
               </p>
               <ul>
-                <li>2 Big Attached Bedrooms</li>
-                <li>2 Family Bedrooms</li>
-                <li>1 Big Living Room</li>
-                <li>1 Kitchen</li>
-                <li>1 Dinning</li>
-                <li>Parking facility for car and bike</li>
-                <li>Luxury carpet, lighting, and fresh paint</li>
+                <li>{title.features?.floors} Floors</li>
+                <li>{title.features?.bedroom} Family Bedrooms</li>
+                <li>{title.features?.bathroom} Big bathroom</li>
+                <li>{title.features?.parkingSpace} Big parkingSpace</li>
+                <li>{title.features?.furnishing} furnishing</li>
+                <li>{title.features?.roadSize} ft roadSize</li>
+                <li>{title.features?.roadType} roadType</li>
+                <li>{title.features?.areaSqFeet} areaSqFeet</li>
               </ul>
               <p>
                 Location: When go from Birauta to Chhorepatan it’s on right
                 before Davis Fall downhill (बिरौटाको ओरालोमा)
               </p>
-              <p>Rent:Rs 32,000 per month</p>
+              <p>Rent:Rs {title.price} per month</p>
             </Card.Body>
           </Card>
         </div>

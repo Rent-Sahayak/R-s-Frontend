@@ -9,7 +9,7 @@ import { Table, Space, Tag, Button, Modal, Input, Layout, Form } from 'antd';
 
 
 import './Dashboard.css'
-import { apiPostHouse } from '../../ApiService/AuthApi';
+import { apiFetchAllHouse, apiFetchHouse, apiPostHouse, apiUpdateHouse } from '../../ApiService/AuthApi';
 
 const { Column, ColumnGroup } = Table;
 const { Content, Header, Footer, Sider } = Layout
@@ -30,6 +30,8 @@ export default function Dashboard() {
     areaSqFeet: ""
   });
   const [price, setPrice] = useState("");
+  
+  
 
 
   const [isAddProperty, setIsAddProperty] = useState(false)
@@ -75,56 +77,64 @@ export default function Dashboard() {
       key: 1,
       title: 'floors',
       dataIndex: "features",
-      render: (features) => features.floors,
+      render: (features) => features?.floors,
       width: 90
 
     },
     {
       key: 2,
-      title: 'bathroom',
+      title: 'bedroom',
       dataIndex: "features",
-      render: (features) => features.bathroom,
+      render: (features) => features?.bedroom,
       width: 90
 
     },
     {
       key: 3,
-      title: 'parkingSpace',
+      title: 'bathroom',
       dataIndex: "features",
-      render: (features) => features.parkingSpace,
-      width: 90,
+      render: (features) => features?.bathroom,
+      width: 90
 
     },
     {
       key: 4,
-      title: 'furnishing',
+      title: 'parkingSpace',
       dataIndex: "features",
-      render: (features) => features.furnishing,
+      render: (features) => features?.parkingSpace,
       width: 90,
 
     },
     {
       key: 5,
-      title: 'roadSize',
+      title: 'furnishing',
       dataIndex: "features",
-      render: (features) => features.roadSize,
+      render: (features) => features?.furnishing,
       width: 90,
 
     },
     {
       key: 6,
-      title: 'roadType',
+      title: 'roadSize',
       dataIndex: "features",
+      render: (features) => features?.roadSize,
       width: 90,
-      render: (features) => features.roadType
 
     },
     {
       key: 7,
+      title: 'roadType',
+      dataIndex: "features",
+      width: 90,
+      render: (features) => features?.roadType
+
+    },
+    {
+      key: 8,
       title: 'areaSqFeet',
       dataIndex: "features",
       width: 90,
-      render: (features) => features.areaSqFeet
+      render: (features) => features?.areaSqFeet
 
     },
 
@@ -145,10 +155,33 @@ export default function Dashboard() {
       }
     }
   ];
+  useEffect(() => {
+    const fetchHouse = async () => {
+      console.log("hi")
+      try {
+        const res = await apiFetchAllHouse();
+        setDataSource(res.data.data)
+        console.log('responsess',res)
+
+       
+      }
+      catch (e) {
+        console.log(e)
+      }
+    };
+    fetchHouse()
+  }, [])
+
   const handleFormSubmit = (async (values) => {
     try {
+      
       const res = await apiPostHouse(values)
-      console.log(res)
+      console.log("hi")
+      setDataSource(pre=>{
+        return[...pre,res.data.data]
+      })
+      console.log("response",res)
+      
 
     }
     catch (e) {
@@ -183,9 +216,29 @@ export default function Dashboard() {
 
 
   }
+  const handleEdit=async(e,value)=>{
+    e.prventDefault();
+    const res =await apiUpdateHouse(value)
+    if(res){
+
+      setDataSource((pre) => {
+        return pre.map((property) => {
+          if (property.id === editingProperty.id) {
+            return editingProperty;
+          }
+          else {
+            return property;
+          }
+        })
+      })
+    }
+    console.log(res.data.data)
+    
+
+  }
   const editProperty = (record) => {
 
-    setIsEditing(true);
+    setIsAddProperty(true);
     setEditingProperty({ ...record })
 
   }
@@ -215,70 +268,29 @@ export default function Dashboard() {
           >
 
           </Table>
-          <Modal title="Edit Property"
-            visible={isEditiing}
-            okText="Save"
-            onCancel={() => {
-              resetEditing()
-
-            }}
-            onOk={() => {
-              setDataSource((pre) => {
-                return pre.map((property) => {
-                  if (property.id === editingProperty.id) {
-                    return editingProperty;
-                  }
-                  else {
-                    return property;
-                  }
-                })
-              })
-              resetEditing()
-            }}
-          >
-            <Input value={editingProperty?.title} onChange={(e) => {
-              setEditingProperty((pre) => {
-                return { ...pre, title: e.target.value }
-              })
-            }} />
-            <Input value={editingProperty?.description} onChange={(e) => {
-              setEditingProperty((pre) => {
-                return { ...pre, description: e.target.value }
-              })
-            }} />
-            <Input value={editingProperty?.features} onChange={(e) => {
-              setEditingProperty((pre) => {
-                return { ...pre, features: e.target.value }
-              })
-            }} />
-            <Input value={editingProperty?.price} onChange={(e) => {
-              setEditingProperty((pre) => {
-                return { ...pre, price: e.target.value }
-              })
-            }} />
-            <Upload value={editingProperty?.images} multiple listType="picture" >
-              <Button icon={<UploadOutlined />}>Upload</Button>
-            </Upload>
-
-          </Modal>
+          
           <Modal title="Add Property"
+            
             visible={isAddProperty}
             okText="Save"
+            destroyOnClose={true}
+            
             onCancel={() => {
               resetAdding()
             }}
             footer={false}
           >
-            <Form onFinish={handleFormSubmit} initialValues={{ title: 'Testing', features: { bedroom: 10 } }}>
+            <Form onFinish={handleFormSubmit} initialValues={editingProperty}>
               <Form.Item name="title" label="Property title" rules={[
                 {
+                  
                   required: true,
                   message: 'Property title is required.'
                 }
               ]} >
                 <Input />
               </Form.Item>
-              <Form.Item name="description" label="Property description" rules={[{required:true,message:'Please enter the description'}]} >
+              <Form.Item name="description" label="Property description"  rules={[{required:true,message:'Please enter the description'}]} >
                 <Input />
               </Form.Item>
               <Form.Item name="price" label="Property price" rules={[{required:true,message:'Please enter the price'}]} >

@@ -34,7 +34,7 @@ function App() {
         <Route path="/renterdashboard" element={<RenterBoard/>}/>
         <Route path="view-request/" element={<ViewRequest/>}/>
         <Route path="/house" element={<IndexPage/>}/>
-        <Route path="/propertylist" element={<ViewProperty/>}/>
+        <Route path="/propertylist/:propertyId" element={<ViewProperty/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/userprofile" element={<ProfileScreen/>}/>
         <Route path="/change-password" element={<Accountsettings/>}/>

@@ -33,7 +33,7 @@ function Navbar() {
     return (
         <div className="Topbar">
             <div className="TopbarLeft">
-                <a href="/"> <img src="assets/images/Rentsahayak.png"></img></a>
+                <a href="/"> <img src={process.env.PUBLIC_URL+"/assets/images/Rentsahayak.png"}></img></a>
             </div>
             <div className="mobile-menu-link">
                 <ul className="TopbarList">

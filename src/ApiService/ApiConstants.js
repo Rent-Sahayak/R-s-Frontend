@@ -9,7 +9,11 @@ const auth = {
     changePassword: '/user/change-password',
     verifyUser: '/user/verify-otp',
     resendOtp: '/user/resendOtp',
-    insertHouse:'/property/house'
+    insertHouse:'/property/house',
+    fetchAllHouse:'property/house',
+    fetchHouse:(id)=>`/property/house/${id}`,
+    updateHouse:(id)=>`/property/house/${id}`
+    
   }
   export const apiEndPoints={auth}
 //   /login
