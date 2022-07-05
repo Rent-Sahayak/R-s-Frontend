@@ -5,6 +5,7 @@ export const userCategory={
 export const userOperations= {
     REGISTER:'REGISTER',
     FORGOT_PASSWORD:'FORGOT_PASSWORD',
+    
     RESET_PASSWORD:'RESET_PASSWORD',
     DEACTIVATION:'DEACTIVATION',
     REACTIVATION:'REACTIVATION',

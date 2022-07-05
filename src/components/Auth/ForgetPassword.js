@@ -31,6 +31,7 @@ function ForgetPassword(){
                     localStorage.setItem(localStorageKey.OTP_DATA, JSON.stringify({email:email,operation:userOperations.FORGOT_PASSWORD})) 
                     navigate('/otpcode')
                     
+                    
                 }
   
             }

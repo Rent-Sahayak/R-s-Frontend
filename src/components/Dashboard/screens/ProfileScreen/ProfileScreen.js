@@ -5,10 +5,11 @@ import Navbar from "../../../Navbar/Navbar";
 
 import "./ProfileScreen.css";
 import { createRef } from "react";
+import { apiAuthGetUser, apiUserProfile, apiUserUpdateProfile } from "../../../../ApiService/AuthApi";
 
 
 const ProfileScreen = () => {
-  const [name, setName] = useState("");
+  const [fullName, setName] = useState("");
   const [email, setEmail] = useState("");
   const [formFile, setFormFile] = useState(null);
   const [pic,setPic]=useState("");
@@ -25,7 +26,43 @@ const ProfileScreen = () => {
       imageRef.current?.setAttribute("src", newSrc);
     }
   };
-  
+  useEffect(()=>{
+    const fetchUser=async()=>{
+      console.log("hi")
+      try{
+        const res =await apiUserProfile();
+       
+        if(res){
+          setName(res.data.data.profile.fullName)
+          setEmail(res.data.data.email)
+          setAddress(res.data.data.profile.address)
+          setPhone(res.data.data.profile.phone)
+        }
+
+      }
+      catch(e){
+        console.log(e)
+      }
+    };
+    fetchUser()
+  },[])
+  const handleSubmit=(async(e)=>{
+    e.preventDefault()
+    try{
+      const res=await apiUserUpdateProfile({fullName:fullName,address:address,phone:phone})
+      if(res){
+        setName(res.data.data.profile.fullName)
+        setEmail(res.data.data.email)
+        setAddress(res.data.data.profile.address)
+        setPhone(res.data.data.profile.phone)
+      }
+      
+    }
+    catch(e){
+      console.log(e)
+    }
+
+  })
   return (
     <div >
       <div>
@@ -33,25 +70,18 @@ const ProfileScreen = () => {
         <Sidebar/>       
         <Row  className="profileContainer">
           <Col md={6}>
-            <Form className="form-design">
+            <p className="ml-24"><span>Welcome</span> {email}</p>
+            <Form className="form-design" onSubmit={handleSubmit}>
             <Form.Group controlId="name">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Enter Name"
-                  value={name}
+                  value={fullName}
                   onChange={(e) => setName(e.target.value)}
                 ></Form.Control>
               </Form.Group>
-              <Form.Group controlId="email">
-                <Form.Label>Email Address</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Enter Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                ></Form.Control>
-              </Form.Group>
+              
               <Form.Group controlId="address">
                 <Form.Label>Address</Form.Label>
                 <Form.Control
@@ -81,6 +111,23 @@ const ProfileScreen = () => {
                 onChange={handleFileChange}
               />
               </Form.Group>
+              <div className="form-group d-flex ">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                <label class="form-check-label" for="flexCheckDefault">
+                  Male
+                </label>
+                
+            
+              </div>
+              <div class="form-check ml-3" >
+                <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault"/>
+                <label class="form-check-label" for="flexCheckDefault">
+                  Female
+                </label>
+            
+              </div>
+            </div>
             </div>
               <Button type="submit" varient="primary">
                 Update

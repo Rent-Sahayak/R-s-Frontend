@@ -2,6 +2,8 @@ const auth = {
     getUser: '/user/profile',
     register: '/user/register',
     login: '/user/login',
+    profile:'/user/profile',
+    update:'/user/update',
     forgotPassword: '/user/forgot-password',
     resetPassword: '/user/reset-password',
     changePassword: '/user/change-password',

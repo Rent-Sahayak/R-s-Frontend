@@ -22,6 +22,10 @@ const apiResetPassword=(data)=>{
 const apiUserProfile=(data)=>{
     return sendRequest('GET',apiEndPoints.auth.profile,true,data)
 }
-
+const apiUserUpdateProfile=(data)=>{
   
-export {apiAuthLogin,apiAuthRegister,apiForgetPassword, apiAuthGetUser,apiVerifyOtp,apiResetPassword,apiUserProfile}
+    return sendRequest('PUT',apiEndPoints.auth.update,true,data)
+    
+}
+  
+export {apiAuthLogin,apiAuthRegister,apiForgetPassword, apiAuthGetUser,apiVerifyOtp,apiResetPassword,apiUserProfile,apiUserUpdateProfile}

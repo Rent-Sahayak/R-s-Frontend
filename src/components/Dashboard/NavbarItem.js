@@ -2,6 +2,7 @@ import React from 'react'
 import * as FaIcons from "react-icons/fa"
 import * as AiIcons from "react-icons/ai"
 import * as IoIcons from "react-icons/io"
+
 export const NavbarItem=[
     {
         title:"Dashboard",
@@ -22,7 +23,7 @@ export const NavbarItem=[
         cName:'nav-text'
     },
     {
-        title:"Statistics",
+        title:"Account settings",
         path:'/stats',
         icon:<AiIcons.AiFillAppstore/>,
         cName:'nav-text'
