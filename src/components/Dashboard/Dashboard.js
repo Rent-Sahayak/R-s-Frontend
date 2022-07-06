@@ -106,20 +106,13 @@ export default function Dashboard() {
   const onAddProperty=(record)=>{
     setIsAddProperty(true)
     setAddingProperty({...record})
-    // const randomNumber=parseInt(Math.random()*1000)
-    // const newProperty= {
-    //   id:randomNumber,
-    //   title:'Name 3' ,
-    //   description:'beautiful property',
-    //   features:'1 BHK',
-    //   price:90000,
-    //   images:'',
-     
-     
-    // }
-    // setDataSource((pre)=>{
-    //   return [...pre,newProperty]
-    // })
+    
+   
+  }
+  const resetAdding=()=>{
+    setIsAddProperty(false);
+    setAddingProperty(null);
+
   }
   const onDeleteProperty=(record)=>{
     Modal.confirm({
@@ -168,13 +161,13 @@ export default function Dashboard() {
          
         }}
         onOk={()=>{
-          setDataSource(pre=>{
-            return pre.map(property=>{
+          setDataSource((pre)=>{
+            return pre.map((property)=>{
               if(property.id===editingProperty.id){
-                return editingProperty
+                return editingProperty;
               }
               else{
-                return property
+                return property;
               }
             })
           })
@@ -182,22 +175,22 @@ export default function Dashboard() {
         }}
         >
           <Input value={editingProperty?.title} onChange={(e)=>{
-            setAddingProperty(pre=>{
+            setEditingProperty((pre)=>{
               return{...pre,title:e.target.value}
             })
           }}/>
           <Input value={editingProperty?.description} onChange={(e)=>{
-            setAddingProperty(pre=>{
+            setEditingProperty((pre)=>{
               return{...pre,description:e.target.value}
             })
           }}/>
           <Input value={editingProperty?.features}onChange={(e)=>{
-            setAddingProperty(pre=>{
+            setEditingProperty((pre)=>{
               return{...pre,features:e.target.value}
             })
           }}/>
           <Input value={editingProperty?.price}onChange={(e)=>{
-            setAddingProperty(pre=>{
+            setEditingProperty((pre)=>{
               return{...pre,price:e.target.value}
             })
           }}/>
@@ -207,15 +200,48 @@ export default function Dashboard() {
         visible={isAddProperty}
         okText="Save"
         onCancel={()=>{
-          setIsAddProperty(false)
+          resetAdding()
         }}
-        onOk={()=>{
-          setIsAddProperty(false)
+        onOk={()=>{ 
+          const randomNumber=parseInt(Math.random()*1000)
+          const newProperty= {
+            id:randomNumber,
+            title:AddingProperty?.title ,
+            description:AddingProperty.description,
+            features:AddingProperty.features,
+            price:AddingProperty.price,
+            images:'',}
+          setDataSource((pre)=>{
+            return [...pre,newProperty]
+          })
+          resetAdding()
+      
         }}
         >
+           <Input value={AddingProperty?.title} onChange={(e)=>{
+            setAddingProperty((pre)=>{
+              return{...pre,title:e.target.value}
+            })
+          }}/>
+          <Input value={AddingProperty?.description} onChange={(e)=>{
+            setAddingProperty((pre)=>{
+              return{...pre,description:e.target.value}
+            })
+          }}/>
+          <Input value={AddingProperty?.features}onChange={(e)=>{
+            setAddingProperty((pre)=>{
+              return{...pre,features:e.target.value}
+            })
+          }}/>
+          <Input value={AddingProperty?.price}onChange={(e)=>{
+            setAddingProperty((pre)=>{
+              return{...pre,price:e.target.value}
+            })
+          }}/>
        
 
         </Modal>
+       
       </Content>
        
       </Layout>
