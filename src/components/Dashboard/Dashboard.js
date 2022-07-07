@@ -194,7 +194,7 @@ export default function Dashboard() {
               return{...pre,price:e.target.value}
             })
           }}/>
-
+           
         </Modal>
         <Modal title="Add Property"
         visible={isAddProperty}
@@ -238,6 +238,7 @@ export default function Dashboard() {
               return{...pre,price:e.target.value}
             })
           }}/>
+          
        
 
         </Modal>

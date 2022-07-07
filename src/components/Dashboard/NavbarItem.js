@@ -17,8 +17,8 @@ export const NavbarItem=[
         cName:'nav-text'
     },
     {
-        title:"View Details",
-        path:'/view-details',
+        title:"View Request",
+        path:'/view-request',
         icon:<AiIcons.AiFillAppstore/>,
         cName:'nav-text'
     },

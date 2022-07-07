@@ -14,6 +14,10 @@
     
 
 }
+.addedMenuItem{
+    display: flex;
+    
+}
 .sidebarListItemText{
     text-decoration: none;
     color:white;
@@ -26,23 +30,26 @@
 .TopbarList{
     display: grid;
     grid-template-columns: repeat(6,auto);
-    width:50vw;
+    width:60vw;
     grid-gap:10px;
     text-align: center;
     justify-content: end;
+    margin-left: 3%;
 
     list-style: none;
-    margin-right: 2rem;
+   
 }
+
 
 .TopbarLeft{
     margin-top: 38px;
-    margin-left: 5;
+    margin-left: 5rem;
 
 }
-.hamburger-menu{
+.navmenu-bars{
     display: none;
 }
+
 @media(max-width:1245px){
     .Topbar{
         height: 60px;
@@ -51,7 +58,7 @@
     .TopbarLeft{
         margin-left: 3;
     }
-    .TopbarList{
+    .leftbar{
         width: 70vw;
     }
 }
@@ -65,16 +72,12 @@
     .TopbarList{
         display: none;
     }
-    .hamburger-menu{
+    .navmenu-bars{
         display: block;
         font-size: 1.8rem;
     }
    
 
 
-}
-.addedMenuItem{
-    display: flex;
-   
 }
 

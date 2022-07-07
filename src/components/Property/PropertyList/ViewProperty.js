@@ -3,15 +3,17 @@ import Navbar from "../../Navbar/Navbar";
 import Footer from "../../Footer/Footer";
 import { Link } from "react-router-dom";
 import { Container, Card, Col, Row, Button } from "react-bootstrap";
-import { Form,Input,Select,Space } from 'antd';
+import { Form, Input, Select, Space } from 'antd';
 
 import "./viewproperty.css";
-import {Modal} from 'antd'
+import { Modal } from 'antd'
 
 const FORM_ENDPOINT = "";
 
 function ViewProperty() {
   const [submitted, setSubmitted] = useState(false);
+  const [price,setPrice]=useState('');
+  const [message,setMessage]=useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
     setIsModalVisible(true);
@@ -45,22 +47,24 @@ function ViewProperty() {
         <div className="d-flex justify-content-between ">
           <div>
 
-          <h1 className="card-title">House Fore Rent In New Baneshwor</h1>
-          <p className="card-text">New Baneshwor,Kathmandu</p>
+            <h1 className="card-title">House Fore Rent In New Baneshwor</h1>
+            <p className="card-text">New Baneshwor,Kathmandu</p>
           </div>
           <div>
-            <Button onClick={showModal} className="mt-2 btn-danger">Book Now</Button>
+            <Button onClick={showModal} className="mt-2 btn-danger">Send Request</Button>
           </div>
           <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
             <form>
-              hi
-              
+              <Input placeholder="negotiated price" 
+           />
+              <Input placeholder="message"  />
+
 
             </form>
-          
+
           </Modal >
-          
-       
+
+
 
 
         </div>
@@ -193,59 +197,59 @@ function ViewProperty() {
                 </Link>
               </Col>
             </div>
-            
+
           </div>
         </div>
         <Card className="card-design" >
-            <h1>Leave a Reply</h1>
-            <p>Your email address will not be published.
+          <h1>Leave a Reply</h1>
+          <p>Your email address will not be published.
             Required fields are marked *</p>
 
-        <form
-          
-          onSubmit={handleSubmit}
-          method="POST"
-          target="_blank"
-        >
-          <div className="mb-3 pt-0">
+          <form
+
+            onSubmit={handleSubmit}
+            method="POST"
+            target="_blank"
+          >
+            <div className="mb-3 pt-0">
               <label>Name*</label>
-            <input
-              type="text"
-              placeholder="Your name"
-              name="name"
-              className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
-              required
-            />
-          </div>
-          <div className="mb-3 pt-0">
-          <label>Email*</label>
-            <input
-              type="email"
-              placeholder="Email"
-              name="email"
-              className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
-              required
-            />
-          </div>
-          <div className="mb-3 pt-0">
-          <label>Comment*</label>
-            <textarea
-              placeholder="Your message"
-              rows="10" cols="50"
-              name="message"
-              className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
-              required
-            />
-          </div>
-          <div className="mb-3 pt-0">
-            <button
-              className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-              type="submit"
-            >
-              Send a message
-            </button>
-          </div>
-        </form>
+              <input
+                type="text"
+                placeholder="Your name"
+                name="name"
+                className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
+                required
+              />
+            </div>
+            <div className="mb-3 pt-0">
+              <label>Email*</label>
+              <input
+                type="email"
+                placeholder="Email"
+                name="email"
+                className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
+                required
+              />
+            </div>
+            <div className="mb-3 pt-0">
+              <label>Comment*</label>
+              <textarea
+                placeholder="Your message"
+                rows="10" cols="50"
+                name="message"
+                className="px-3 py-3 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
+                required
+              />
+            </div>
+            <div className="mb-3 pt-0">
+              <button
+                className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                type="submit"
+              >
+                Send a message
+              </button>
+            </div>
+          </form>
         </Card>
       </div>
     </div>

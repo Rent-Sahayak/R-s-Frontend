@@ -16,6 +16,7 @@ import GoogleMap from "./components/Property/PropertyList/GoogleMap";
 import OtpRegister from "./components/Auth/OtpRegister";
 import Dashboard from "./components/Dashboard/Dashboard";
 import ProfileScreen from "./components/Dashboard/screens/ProfileScreen/ProfileScreen";
+import ViewRequest from "./components/Dashboard/ViewRequest";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path='/otpcode' element={<OTP/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/renterdashboard" element={<RenterBoard/>}/>
+        <Route path="view-request/" element={<ViewRequest/>}/>
         <Route path="/house" element={<IndexPage/>}/>
         <Route path="/propertylist" element={<ViewProperty/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>

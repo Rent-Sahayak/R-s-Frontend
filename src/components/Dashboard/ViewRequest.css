@@ -1,0 +1,23 @@
+.req-contain{
+    margin-left: 30%;
+    display: flex;
+    justify-content: space-between;
+    width: 55%;
+    margin-top: 30px;
+    
+}
+.font{
+ font-size: 2rem
+}
+.icon-design{
+    color: rgb(241, 78, 78);
+    cursor: pointer;
+    margin-left: 30.6%;
+    font-size: 3rem;
+    margin-top: 10px;
+    border-radius: 50px;
+   
+    -webkit-box-shadow: 10px 10px 10px 0px rgb(241, 78, 78);
+    -moz-box-shadow: 10px 10px 10px 0px rgb(241, 78, 78);
+    box-shadow: 5px 3px 10px 0px rgb(241, 78, 78);
+}

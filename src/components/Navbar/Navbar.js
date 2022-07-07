@@ -1,78 +1,101 @@
 import React, { useEffect, useState } from "react";
 import './Navbar.css'
 import { commonNavItems, notLoggedInNavItems } from "./NavbarItem";
-import {FaHamburger} from "react-icons/fa"
+import { FaBars } from "react-icons/fa"
+import { AiOutlineClose } from "react-icons/ai"
 import { useUserContext } from "../../context/userContext";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import './Sidebar.css';
 
 
-
-function Navbar(){
-    const [showMediaIcons,setShowMediaIcons]=useState(false)
+function Navbar() {
+    const [showMediaIcons, setShowMediaIcons] = useState(false)
     const [activeNavItems, setActiveNavItems] = useState([]);
-    const navigate=useNavigate()
+    const navigate = useNavigate()
+    const showSidebar = () => setShowMediaIcons(!showMediaIcons);
 
-    const { isLoggedIn} = useUserContext()
+    const { isLoggedIn } = useUserContext()
 
     useEffect(() => {
-        if(isLoggedIn){
+        if (isLoggedIn) {
             setActiveNavItems(commonNavItems)
-        }else{  
+        } else {
             setActiveNavItems([...commonNavItems, ...notLoggedInNavItems])
         }
     }, [isLoggedIn])
-    async function Logout(){
+    async function Logout() {
         localStorage.clear();
-        
-      
+
+
 
     }
 
-    return(
+    return (
         <div className="Topbar">
             <div className="TopbarLeft">
-            <a href="/"> <img  src="assets/images/Rentsahayak.png"></img></a>
+                <a href="/"> <img src="assets/images/Rentsahayak.png"></img></a>
             </div>
             <div className="mobile-menu-link">
-            <ul className="TopbarList">
-                {activeNavItems.length > 0 && activeNavItems.map((items,index)=>{
-                    return(
-                    <li  key={index}>
-                        <a className={'sidebarListItemText'} href={items.url}>{items.title}</a>
-                    </li>
-                    )
+                <ul className="TopbarList">
+                    {activeNavItems.length > 0 && activeNavItems.map((items, index) => {
+                        return (
+                            <li key={index}>
+                                <a className={'sidebarListItemText'} href={items.url}>{items.title}</a>
+                            </li>
+                        )
 
-                })}
-                {isLoggedIn && (
-               
-                    <ul className="addedMenuItem">
-                        <li><a href="/login" className={'sidebarListItemText'} onClickCapture={Logout}>Logout</a></li>
-                        <li><a href="/dashboard" className={'sidebarListItemText'}>Dashboard</a></li>
-                    </ul>
-               
-                
-                )}
-            </ul>
+                    })}
+                    {isLoggedIn && (
+
+                        <ul className="addedMenuItem">
+                            <li><a href="/login" className={'sidebarListItemText'} onClickCapture={Logout}>Logout</a></li>
+                            <li><a href="/dashboard" className={'sidebarListItemText'}>Dashboard</a></li>
+                        </ul>
+
+
+                    )}
+                </ul>
             </div>
-            <div className="hamburger-menu">
-                <span onClick={()=>setShowMediaIcons(!showMediaIcons)}>
-                    <FaHamburger/>
+            <div >
+                <span className="navbar-main">
+                    <Link to="#" className="navmenu-bars">
+                        <FaBars onClick={showSidebar} />
+                    </Link>
                 </span>
-                {showMediaIcons && (
-                   <ul className="TopbarList">
-                   {activeNavItems.length > 0 && activeNavItems.map((items,index)=>{
-                       return(
-                       <li  key={index}>
-                           <a className={'sidebarListItemText'} href={items.url}>{items.title}</a>
-                       </li>
-                       )
-   
-                   })}
-               </ul>
-                )}
+                <nav className={showMediaIcons ? 'nav-menus active' : 'nav-menus'}>
+
+
+
+
+                    <ul className="nav-menus-items" onClick={showSidebar}>
+                        <li classname='navbars-toogle'>
+                            <Link to="#" className="menu-bars">
+                                <AiOutlineClose />
+                            </Link>
+                        </li>
+                        {activeNavItems.length > 0 && activeNavItems.map((items, index) => {
+                            return (
+                                <li key={index}>
+                                    <a className={items.cName} href={items.url}>{items.title}</a>
+                                </li>
+                            )
+
+                        })}
+                        {isLoggedIn && (
+
+                            <ul >
+                                <li><a href="/login" className={'navs-text'} onClickCapture={Logout}>Logout</a></li>
+                                <li><a href="/dashboard" className={'navs-text'}>Dashboard</a></li>
+                            </ul>
+
+
+                        )}
+                    </ul>
+                </nav>
+
             </div>
-            
-            
+
+
         </div>
     )
 
