@@ -17,6 +17,7 @@ import OtpRegister from "./components/Auth/OtpRegister";
 import Dashboard from "./components/Dashboard/Dashboard";
 import ProfileScreen from "./components/Dashboard/screens/ProfileScreen/ProfileScreen";
 import ViewRequest from "./components/Dashboard/ViewRequest";
+import Accountsettings from "./components/Dashboard/AccountSettings/Accountsettings";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
         <Route path="/propertylist" element={<ViewProperty/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/userprofile" element={<ProfileScreen/>}/>
+        <Route path="/change-password" element={<Accountsettings/>}/>
        
         <Route path='/otpregister' element={<OtpRegister/>}/>
        

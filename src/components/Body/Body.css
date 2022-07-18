@@ -58,3 +58,17 @@
 .sub-sub-container4{
     margin-left: 9%;
 }
+@media(max-width:950px) {
+    .Image{
+       width: 850px;
+    }
+    .Button-style{
+        margin-top: 40px;
+    }
+    .Sub-container2{
+        margin-left: 80px;
+        margin-top: 40px;
+    }
+    
+   
+}

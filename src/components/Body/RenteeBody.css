@@ -13,3 +13,17 @@
 .submain-container2{
     margin-right: 8%;
 }
+@media(max-width:950px) {
+    .containers{
+        margin-left: 80px;
+        margin-top: 40px;
+    }
+    .Image{
+        width: 600px;
+        
+    }
+    
+    
+    
+   
+}

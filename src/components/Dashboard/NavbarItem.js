@@ -21,11 +21,5 @@ export const NavbarItem=[
         path:'/view-request',
         icon:<AiIcons.AiFillAppstore/>,
         cName:'nav-text'
-    },
-    {
-        title:"Account settings",
-        path:'/stats',
-        icon:<AiIcons.AiFillAppstore/>,
-        cName:'nav-text'
     }
 ]

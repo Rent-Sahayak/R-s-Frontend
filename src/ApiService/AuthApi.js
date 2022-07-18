@@ -27,5 +27,11 @@ const apiUserUpdateProfile=(data)=>{
     return sendRequest('PUT',apiEndPoints.auth.update,true,data)
     
 }
+const apiFetchHouse=(data)=>{
+    return sendRequest('GET',apiEndPoints.auth.insertHouse,true,data)
+}
+const apiPostHouse=(data)=>{
+    return sendRequest("POST",apiEndPoints.auth.insertHouse,true,data)
+}
   
-export {apiAuthLogin,apiAuthRegister,apiForgetPassword, apiAuthGetUser,apiVerifyOtp,apiResetPassword,apiUserProfile,apiUserUpdateProfile}
+export {apiAuthLogin,apiAuthRegister,apiForgetPassword, apiAuthGetUser,apiVerifyOtp,apiResetPassword,apiUserProfile,apiUserUpdateProfile,apiFetchHouse,apiPostHouse}

@@ -8,7 +8,8 @@ const auth = {
     resetPassword: '/user/reset-password',
     changePassword: '/user/change-password',
     verifyUser: '/user/verify-otp',
-    resendOtp: '/user/resendOtp'
+    resendOtp: '/user/resendOtp',
+    insertHouse:'/property/house'
   }
   export const apiEndPoints={auth}
 //   /login
